@@ -1,0 +1,23 @@
+# ansible files
+*.retry
+**/*.testrender
+
+# secrets
+**/secrets.yml
+**/passwords
+
+# temporary files
+tmp/
+
+# macOS files
+*.DS_Store
+
+# virtualenv
+env/
+
+# Python cache and binary files
+__pycache__
+**/*.pyc
+
+# Real inventory file
+production.yml

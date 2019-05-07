@@ -1,0 +1,2 @@
+# run 'pip list --outdated' to check for available upgrades
+ansible==2.7.0
