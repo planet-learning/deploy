@@ -1,0 +1,55 @@
+---
+- name: Install "docker-ce" prerequisites
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+      - software-properties-common
+    autoclean: "yes"
+    update_cache: "yes"
+    state: present
+
+- name: Add Docker GPG key
+  apt_key:
+    url: "https://download.docker.com/linux/{{ ansible_distribution.lower() }}/gpg"
+    state: present
+
+- name: Set up Docker stable repository
+  vars:
+   arch: {'armv7l': 'armhf', 'x86_64': 'amd64'}
+  apt_repository:
+    repo: "deb [arch={{ arch[ansible_architecture] if ansible_architecture in arch else ansible_architecture }}] https://download.docker.com/linux/{{ ansible_distribution.lower() }} {{ ansible_distribution_release }} stable"
+    state: present
+
+- name: Install "docker-ce" package
+  apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    autoclean: "yes"
+    update_cache: "yes"
+    state: present
+
+- name: Install pip
+  apt:
+    name:
+      - python-pip
+    autoclean: "yes"
+    update_cache: "yes"
+    state: present
+
+- name: Install pip packages for Ansible
+  pip:
+    name:
+      - docker >= 3.7.2
+      - docker-compose >= 1.7.0
+      - PyYAML >= 3.11
+    state: present
+  #executable: pip3
+
+- name: Grant user access to docker engine
+  shell: "usermod -a -G docker {{ ansible_user_id }}"
+...
