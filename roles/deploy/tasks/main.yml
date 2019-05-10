@@ -1,0 +1,42 @@
+---
+- name: Include secrets variables
+  include_vars: '{{ item }}'
+  with_items:
+    - 'secrets.yml'
+
+- name: Install NFS utilities
+  apt:
+    name:
+      - nfs-common
+    autoclean: "yes"
+    update_cache: "yes"
+    state: present
+
+- name: Create a directory to host the code
+  file:
+    path: '{{ dir_path }}'
+    state: directory
+  
+- name: Clone git repository
+  git:
+    clone: true
+    dest: "{{ dir_path }}"
+    repo: "{{ git_repo }}"
+    accept_hostkey: true
+    version: "{{ git_branch }}"
+  # become: true
+  # become_user: "{{ user }}"
+
+- name: Copy .env file
+  template:
+    src: .env.j2
+    dest: "{{ dir_path }}/.env"
+    owner: root
+    group: root
+    mode: 0640
+
+- name: Run docker compose
+  docker_service:
+    project_src: "{{ dir_path }}"
+    state: present
+...
