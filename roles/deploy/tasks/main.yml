@@ -39,4 +39,5 @@
   docker_service:
     project_src: "{{ dir_path }}"
     state: present
+    restarted: yes
 ...
