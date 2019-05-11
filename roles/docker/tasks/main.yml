@@ -49,7 +49,4 @@
       - PyYAML >= 3.11
     state: present
   #executable: pip3
-
-- name: Grant user access to docker engine
-  shell: "usermod -a -G docker {{ ansible_user_id }}"
 ...
