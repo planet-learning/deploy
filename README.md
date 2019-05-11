@@ -46,6 +46,16 @@ If you close your shell, you need to re-run the `source env/bin/activate` comman
 
 ## Utilisation
 
+### Setup the inventory
+
+You need an inventory file in order to launch this script. To do so, copy the provided template :
+
+```sh
+cp inventories/production.yml.template inventories/production.yml
+```
+
+Then open the new `inventory.yml` file and file out the IP addresses of your `storage` and `compute` machines.
+
 ### Setup secret variables
 
 The role used to deploy the code requires the file `roles/deploy/vars/secrets.yml` wich is not synced with GitHub for security reasons.
