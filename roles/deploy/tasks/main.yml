@@ -35,9 +35,13 @@
     group: root
     mode: 0640
 
+- name: Remove projet if running
+  docker_service:
+    project_src: "{{ dir_path }}"
+    state: absent
+
 - name: Run docker compose
   docker_service:
     project_src: "{{ dir_path }}"
     state: present
-    restarted: yes
 ...
