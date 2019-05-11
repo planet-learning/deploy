@@ -1,0 +1,8 @@
+---
+- name: Deploy planet-learning code
+  hosts: compute
+
+  roles:
+    - docker
+    - deploy
+...
