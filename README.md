@@ -46,20 +46,6 @@ If you close your shell, you need to re-run the `source env/bin/activate` comman
 
 ## Utilisation
 
-### Setup secret variables
-
-The role used to deploy the code requires the file `roles/deploy/vars/secrets.yml` wich is not synced with GitHub for security reasons.
-
-To create the `secrets.yml` file for your installation, run :
-
-```sh
-cp roles/deploy/vars/secrets.yml.template roles/deploy/vars/secrets.yml
-```
-
-Then open the new `secrets.yml` file, and file out the right values for your setup.
-
-A description of the fields can be found in the [planet-learning/planet-learning](https://github.com/planet-learning/planet-learning) repoitory.
-
 ### Run ansible playbook with ssh password
 
 Use 
