@@ -1,0 +1,7 @@
+---
+- name: Install docker on debian or ubuntu
+  hosts: all
+
+  roles:
+    - docker
+...
