@@ -79,3 +79,15 @@ Use
 ```sh
 ansible-playbook playbooks/deploy.yml --ask-pass
 ```
+
+## Directory structure
+
+```py
+├── playbooks/
+│   └── deploy.yml
+├── README.md
+├── requirements.txt
+└── roles/
+    ├── deploy/ # role to deploy the compute machine
+    └── docker/ # role to install docker on the host
+```
