@@ -4,6 +4,8 @@
 
 The Ansible playbooks hosted in this repository are designed to deploy the [planet-learning](https://github.com/planet-learning/planet-learning) stack which consists of a storage node hosting a NFS server and a compute node which processes the data.
 
+>NB: this repo is not yet complete and the storage node is not yet automatically deployed.
+
 ## Installation
 
 These instructions allow you to install all the required Python 3 and Ansible Galaxy dependencies locally (in a Python 3 virtualenv for ansible itself and other Python 3 dependencies, and in a subfolder for the Ansible Galaxy roles).
@@ -75,5 +77,5 @@ A description of the fields can be found in the [planet-learning/planet-learning
 Use 
 
 ```sh
-ansible-playbook playbooks/<playbook>.yml -l <machine> --ask-pass
+ansible-playbook playbooks/deploy.yml --ask-pass
 ```
